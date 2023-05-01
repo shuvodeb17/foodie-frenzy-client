@@ -3,6 +3,8 @@ import './Login.css';
 import loginImage from '../../assets/img/login.png';
 import googleLogo from '../../assets/img/login/download.png';
 import githubLogo from '../../assets/img/login/GitHub-Mark.png';
+import { Link } from 'react-router-dom';
+
 
 const Login = () => {
     return (
@@ -20,7 +22,14 @@ const Login = () => {
                             <p className='forget-pass mt-4'>Forget Password</p>
                         </div>
 
-                        <button className='button mb-10'>Login</button>
+                        <button className='button'>Login</button>
+
+                        <div className='mb-10'>
+                            <Link to='/register' className='acc'><small>Don't have an account ?
+                                <span className='forget-pass'>Register</span>
+                            </small>
+                            </Link>
+                        </div>
 
                         <div className="social-login flex gap-4 items-center justify-center mt-5 p-2">
                             <div>
