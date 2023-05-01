@@ -1,0 +1,40 @@
+input {
+  background: #e8e6f0;
+  border-radius: 23px;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  width: 60%;
+  outline: none;
+}
+.login-main {
+  height: 86vh;
+}
+.forget-pass {
+  text-align: right;
+  width: 60%;
+  margin: auto;
+  cursor: pointer;
+  color: orange;
+  text-decoration: underline;
+}
+.button {
+  background: #fe4320;
+  width: 60%;
+  padding: 10px;
+  border-radius: 22px;
+  color: #fff;
+  margin-top: 10px;
+}
+.social-login {
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 6px 6px 12px #d0cfcf, -6px -6px 12px #ffffff;
+  width: 60%;
+  margin: 20px auto;
+}
+.social-login {
+  cursor: pointer;
+}
+.social-login img {
+  width: 37px;
+}

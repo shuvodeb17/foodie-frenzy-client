@@ -1,6 +1,7 @@
 import React from 'react';
 import AboutUs from '../AboutUs/AboutUs';
 import ChefBooking from '../ChefBooking/ChefBooking';
+import Footer from '../Footer/Footer';
 import './Home.css';
 
 const Home = () => {
@@ -19,6 +20,7 @@ const Home = () => {
             </div>
             <AboutUs />
             <ChefBooking />
+            <Footer />
         </>
     );
 };
