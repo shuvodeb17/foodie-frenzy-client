@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../providers/AuthProviders';
 
 const Header = () => {
+    const {user} =useContext(AuthContext);
     return (
         <div className="navbar bg-gray-100">
             <div className="container mx-auto">

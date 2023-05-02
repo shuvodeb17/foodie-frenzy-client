@@ -1,18 +1,30 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Login.css';
 import loginImage from '../../assets/img/login.png';
 import googleLogo from '../../assets/img/login/download.png';
 import githubLogo from '../../assets/img/login/GitHub-Mark.png';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../providers/AuthProviders';
 
 
 const Login = () => {
+    const { login } = useContext(AuthContext)
 
     const loginHandler = e => {
         e.preventDefault()
         const email = e.target.email.value;
         const password = e.target.password.value;
         console.log(email, password);
+
+        // login
+        login(email, password)
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+            })
+            .catch(error => {
+                console.log(error.message);
+            })
     }
 
     return (
