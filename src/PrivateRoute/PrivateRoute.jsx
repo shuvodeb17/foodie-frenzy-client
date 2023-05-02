@@ -3,9 +3,12 @@ import { Navigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProviders';
 
 const PrivateRoute = ({ children }) => {
-    const { user } = useContext(AuthContext);
+    const { user, loading } = useContext(AuthContext);
     const location = useLocation();
-    console.log(location);
+
+    if(loading){
+        return <div className='h-screen flex items-center justify-center'><progress className="progress w-56"></progress></div>
+    }
 
     if (user) {
         return children
