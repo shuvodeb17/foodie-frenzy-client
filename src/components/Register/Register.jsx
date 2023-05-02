@@ -8,7 +8,10 @@ const Register = () => {
     const registerHandler = e => {
         e.preventDefault();
         const name = e.target.name.value;
-        console.log(name);
+        const email = e.target.email.value;
+        const photo = e.target.photo.value;
+        const password = e.target.password.value;
+        console.log(name, email, photo, password);
     }
 
     return (

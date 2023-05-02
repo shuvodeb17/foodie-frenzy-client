@@ -3,8 +3,12 @@ import AboutUs from '../AboutUs/AboutUs';
 import ChefBooking from '../ChefBooking/ChefBooking';
 import Footer from '../Footer/Footer';
 import './Home.css';
+import { useLoaderData } from 'react-router-dom';
+import Chef from '../Chef/Chef';
 
 const Home = () => {
+    const allChef = useLoaderData();
+
     return (
         <>
             <div className='home-wrapper'>
@@ -18,6 +22,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
+            <Chef allChef={allChef}/>
             <AboutUs />
             <ChefBooking />
             <Footer />

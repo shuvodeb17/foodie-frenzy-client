@@ -7,22 +7,30 @@ import { Link } from 'react-router-dom';
 
 
 const Login = () => {
+
+    const loginHandler = e => {
+        e.preventDefault()
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        console.log(email, password);
+    }
+
     return (
         <div className='login-main flex items-center justify-center'>
             <div className="container mx-auto">
                 <div className="login-wrapper grid grid-cols-2 text-center">
                     <div className="login-left">
                         <h2 className="text-2xl font-bold text-[#FE4320] tracking-wider">User Login</h2>
-                        <form>
+                        <form onSubmit={loginHandler}>
                             <input className='mb-5 mt-5' required name='email' type="email" placeholder='Email' />
                             <br />
                             <input required name='password' type="password" placeholder='Password' />
+                            <div>
+                                <p className='forget-pass mt-4'>Forget Password</p>
+                            </div>
+                            <button className='button'>Login</button>
                         </form>
-                        <div>
-                            <p className='forget-pass mt-4'>Forget Password</p>
-                        </div>
 
-                        <button className='button'>Login</button>
 
                         <div className='mb-10'>
                             <Link to='/register' className='acc'><small>Don't have an account ?
