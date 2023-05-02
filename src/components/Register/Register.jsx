@@ -3,6 +3,7 @@ import loginImage from '../../assets/img/login.png';
 import '../Login/Login.css';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProviders';
+import { updateProfile } from 'firebase/auth';
 
 const Register = () => {
 
@@ -20,7 +21,23 @@ const Register = () => {
         createUser(name, email, photo, password)
             .then(result => {
                 const createdUser = result.user;
+                setUsernameAndPhoto(result.user, name, photo)
                 console.log(createdUser);
+            })
+            .catch(error => {
+                console.log(error.message);
+            })
+    }
+
+    // set username and photoURL
+    const setUsernameAndPhoto = (user, name, photo) => {
+        updateProfile(user, {
+            displayName: name,
+            photoURL: photo
+        })
+            .then(result => {
+                const details = result.user;
+                console.log(details);
             })
             .catch(error => {
                 console.log(error.message);
