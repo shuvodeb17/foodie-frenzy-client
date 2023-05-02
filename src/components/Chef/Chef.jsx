@@ -2,7 +2,6 @@ import React from 'react';
 import ChefDetails from '../ChefDetails/ChefDetails';
 
 const Chef = ({ allChef }) => {
-    console.log(allChef);
     return (
         <div className='bg-[#151920] py-10'>
             <div className="container mx-auto">

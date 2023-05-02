@@ -5,6 +5,7 @@ import { AuthContext } from '../../providers/AuthProviders';
 const Header = () => {
     const { user, logout } = useContext(AuthContext);
 
+    console.log(user?.photoURL);
     const logoutHandler = () => {
         logout()
             .then()
@@ -22,11 +23,12 @@ const Header = () => {
                 <div className="flex-none">
                     <ul className="menu menu-horizontal px-1">
                         <li><Link to='/'>Home</Link></li>
+                        <li><Link style={{ display: 'none' }} to='/'>{user?.email}</Link></li>
                         <li><Link to='/blog'>Blog</Link></li>
                         {
                             user &&
                             <div className="avatar me-5">
-                                <div className="user-image w-10 rounded-full">
+                                <div style={{ height: '53px' }} className="user-image rounded-full">
                                     <img title={user?.displayName} src={user?.photoURL} />
                                 </div>
                             </div>

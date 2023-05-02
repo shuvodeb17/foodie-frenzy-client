@@ -1,15 +1,17 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import './Login.css';
 import loginImage from '../../assets/img/login.png';
-import googleLogo from '../../assets/img/login/download.png';
-import githubLogo from '../../assets/img/login/GitHub-Mark.png';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProviders';
+import GoogleSignIn from '../GoogleSignIn/GoogleSignIn';
+import GitHubSignIn from '../GitHubSignIn/GitHubSignIn';
 
 
 const Login = () => {
     const { login } = useContext(AuthContext)
     const navigate = useNavigate();
+    const [success, setSuccess] = useState('');
+    const [error, setError] = useState('');
 
     const loginHandler = e => {
         e.preventDefault()
@@ -22,10 +24,13 @@ const Login = () => {
             .then(result => {
                 const loggedUser = result.user
                 console.log(loggedUser);
+                setError('');
+                setSuccess('Registration Successful')
                 navigate('/')
             })
             .catch(error => {
-                console.log(error.message);
+                setSuccess('');
+                setError(error.message);
             })
     }
 
@@ -42,6 +47,10 @@ const Login = () => {
                             <div>
                                 <p className='forget-pass mt-4'>Forget Password</p>
                             </div>
+                            <div>
+                                <p className="text-green-600">{success}</p>
+                                <p className="text-red-600">{error}</p>
+                            </div>
                             <button className='button'>Login</button>
                         </form>
 
@@ -53,23 +62,9 @@ const Login = () => {
                             </Link>
                         </div>
 
-                        <div className="social-login flex gap-4 items-center justify-center mt-5 p-2">
-                            <div>
-                                <img src={googleLogo} alt="" />
-                            </div>
-                            <div>
-                                <p>Sign in with Google</p>
-                            </div>
-                        </div>
+                        <GoogleSignIn />
+                        <GitHubSignIn />
 
-                        <div className="social-login flex gap-4 items-center justify-center mt-5 p-2">
-                            <div>
-                                <img src={githubLogo} alt="" />
-                            </div>
-                            <div>
-                                <p>Sign in with GitHub</p>
-                            </div>
-                        </div>
                     </div>
                     <div className="login-right">
                         <img src={loginImage} alt="" />

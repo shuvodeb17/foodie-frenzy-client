@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import loginImage from '../../assets/img/login.png';
 import '../Login/Login.css';
 import { Link } from 'react-router-dom';
@@ -8,6 +8,8 @@ import { updateProfile } from 'firebase/auth';
 const Register = () => {
 
     const { createUser } = useContext(AuthContext);
+    const [success, setSuccess] = useState('');
+    const [error, setError] = useState('');
 
     const registerHandler = e => {
         e.preventDefault();
@@ -21,11 +23,14 @@ const Register = () => {
         createUser(name, email, photo, password)
             .then(result => {
                 const createdUser = result.user;
-                setUsernameAndPhoto(result.user, name, photo)
                 console.log(createdUser);
+                setUsernameAndPhoto(result.user, name, photo)
+                setError('');
+                setSuccess('Registration Successful')
             })
             .catch(error => {
-                console.log(error.message);
+                setSuccess('');
+                setError(error.message);
             })
     }
 
@@ -59,6 +64,12 @@ const Register = () => {
                                 <input className='mt-5 mb-5' required name='photo' type="text" placeholder='Photo' />
                                 <br />
                                 <input required className='mb-3' name='password' type="password" placeholder='Password' />
+                                
+                                <div>
+                                    <p className="text-green-600">{success}</p>
+                                    <p className="text-red-600">{error}</p>
+                                </div>
+
                                 <button className='button'>Register</button>
                             </form>
 
