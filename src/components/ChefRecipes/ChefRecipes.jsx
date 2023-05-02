@@ -5,12 +5,23 @@ import './ChefRecipes.css';
 import { HandThumbUpIcon } from '@heroicons/react/24/solid';
 import { Rating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
+import toast, { Toaster } from 'react-hot-toast';
 
 const ChefRecipes = () => {
+
     const chefRecipes = useLoaderData();
     console.log(chefRecipes);
-    const [rating, setRating] = useState(0)
+    const [dis, setDis] = useState(false);
     const { picture, name, description, likes, numbersOfRecipes, experience, recipeName, ingredients, cookingMethod, ratings } = chefRecipes;
+
+    // toast
+    const favoriteBtnHandler = () => {
+        toast('Add to Favorite');
+        console.log('hlw');
+        setDis(true);
+    }
+
+    console.log(dis);
 
 
 
@@ -33,12 +44,16 @@ const ChefRecipes = () => {
                             </div>
 
                             <div className='grid grid-cols-2 recipe-page-multiple mt-5 p-3'>
+
+                                {/* Recipe Name */}
                                 <div className='recipe-page-left'>
                                     <h2 className="text-2xl font-bold mt-3">Recipe Name</h2>
                                     {
                                         recipeName.map(r => <p> {r}</p>)
                                     }
                                 </div>
+
+                                {/* Ingredients */}
                                 <div className='recipe-page-right'>
                                     <h2 className="text-2xl font-bold mt-3">Ingredients</h2>
                                     {
@@ -49,6 +64,8 @@ const ChefRecipes = () => {
                                 </div>
                             </div>
                             <div className='mt-3'>
+
+                                {/* cooking method */}
                                 <h2 className="">
                                     <span className='font-bold'>Cooking Method :</span>
                                     <span> {cookingMethod}</span>
@@ -61,6 +78,11 @@ const ChefRecipes = () => {
                                 </h2>
                                 <Rating style={{ maxWidth: 100 }} value={ratings} readOnly />
                             </div>
+
+                            <button disabled={dis} className="favorite-btn btn btn-primary mt-3 fav-btn" onClick={favoriteBtnHandler}>Favorite</button>
+                            <Toaster />
+
+
                         </div>
                     </div>
                 </div>

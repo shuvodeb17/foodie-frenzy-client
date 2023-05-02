@@ -8,5 +8,11 @@
 .recipe-page-multiple {
   border: 1px solid #ddd;
 }
-
-
+.fav-btn {
+  width: 100%;
+}
+.favorite-btn[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
