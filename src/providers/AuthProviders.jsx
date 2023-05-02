@@ -1,13 +1,13 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, signInWithPopup } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, signInWithPopup, GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import app from '../firebase/firebase.config';
-import { GoogleAuthProvider } from "firebase/auth";
 
 
 
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
+const gitHubProvider = new GithubAuthProvider();
 
 const AuthProviders = ({ children }) => {
 
@@ -29,8 +29,13 @@ const AuthProviders = ({ children }) => {
     }
 
     // google signIn
-    const googleSignIn = () =>{
+    const googleSignIn = () => {
         return signInWithPopup(auth, googleProvider);
+    }
+
+    // 
+    const GitHubSignIn = () => {
+        return signInWithPopup(auth, gitHubProvider)
     }
 
     // observe
@@ -50,7 +55,8 @@ const AuthProviders = ({ children }) => {
         createUser,
         login,
         logout,
-        googleSignIn
+        googleSignIn,
+        GitHubSignIn
     }
 
     return (
