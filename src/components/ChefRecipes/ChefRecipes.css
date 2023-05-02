@@ -1,7 +1,12 @@
-.chef-main{
-    border: 1px solid #ddd;
+.chef-main {
+  border: 1px solid #ddd;
 }
 .chef-recipe-img {
   height: 46vh;
   width: 100%;
 }
+.recipe-page-multiple {
+  border: 1px solid #ddd;
+}
+
+
