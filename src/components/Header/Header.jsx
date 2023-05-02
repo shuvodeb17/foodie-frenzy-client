@@ -3,7 +3,16 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProviders';
 
 const Header = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logout } = useContext(AuthContext);
+
+    const logoutHandler = () => {
+        logout()
+            .then()
+            .catch(error => {
+                console.log(error.message);
+            })
+    }
+
     return (
         <div className="navbar bg-gray-100">
             <div className="container mx-auto">
@@ -14,16 +23,26 @@ const Header = () => {
                     <ul className="menu menu-horizontal px-1">
                         <li><Link to='/'>Home</Link></li>
                         <li><Link to='/blog'>Blog</Link></li>
-                        <div className="avatar me-5">
-                            <div className="user-image w-10 rounded-full">
-                                <img title={user?.displayName} src={user?.photoURL} />
+                        {
+                            user &&
+                            <div className="avatar me-5">
+                                <div className="user-image w-10 rounded-full">
+                                    <img title={user?.displayName} src={user?.photoURL} />
+                                </div>
                             </div>
-                        </div>
-
-                        <Link to='/login'>
-                            <button className="btn btn-primary">
-                                Login
-                            </button></Link>
+                        }
+                        {
+                            user ?
+                                <Link to='/login'>
+                                    <button onClick={logoutHandler} className="btn btn-primary">
+                                        Logout
+                                    </button></Link>
+                                :
+                                <Link to='/login'>
+                                    <button className="btn btn-primary">
+                                        Login
+                                    </button></Link>
+                        }
                     </ul>
                 </div>
             </div>

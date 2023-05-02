@@ -3,12 +3,13 @@ import './Login.css';
 import loginImage from '../../assets/img/login.png';
 import googleLogo from '../../assets/img/login/download.png';
 import githubLogo from '../../assets/img/login/GitHub-Mark.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProviders';
 
 
 const Login = () => {
     const { login } = useContext(AuthContext)
+    const navigate = useNavigate();
 
     const loginHandler = e => {
         e.preventDefault()
@@ -19,8 +20,9 @@ const Login = () => {
         // login
         login(email, password)
             .then(result => {
-                const loggedUser = result.user;
+                const loggedUser = result.user
                 console.log(loggedUser);
+                navigate('/')
             })
             .catch(error => {
                 console.log(error.message);
