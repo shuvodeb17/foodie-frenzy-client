@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import './Login.css';
 import loginImage from '../../assets/img/login.png';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProviders';
 import GoogleSignIn from '../GoogleSignIn/GoogleSignIn';
 import GitHubSignIn from '../GitHubSignIn/GitHubSignIn';
@@ -12,6 +12,9 @@ const Login = () => {
     const navigate = useNavigate();
     const [success, setSuccess] = useState('');
     const [error, setError] = useState('');
+    const location = useLocation()
+    let from = location.state?.from?.pathname || "/";
+    console.log(location);
 
     const loginHandler = e => {
         e.preventDefault()
@@ -26,7 +29,7 @@ const Login = () => {
                 console.log(loggedUser);
                 setError('');
                 setSuccess('Registration Successful')
-                navigate('/')
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 setSuccess('');
