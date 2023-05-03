@@ -5,7 +5,7 @@ const AboutUs = () => {
     return (
         <div className='bg-[#080B0E]'>
             <div className="container mx-auto">
-                <div className='grid grid-cols-2 gap-4 py-11'>
+                <div className='grid lg:grid-cols-2 px-4 gap-4 py-11'>
                     <div>
                         <img src={aboutImg} alt="" />
                     </div>

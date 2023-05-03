@@ -31,7 +31,7 @@ const ChefRecipes = () => {
         <>
             <div className='bg-[#151920]'>
                 <div className="container mx-auto">
-                    <div className='w-6/12 text-white mx-auto'>
+                    <div className='lg:w-6/12 lg:px-0 px-4 text-white mx-auto'>
                         <div className='chef-main bg-[#0E1317] p-5 '>
                             <LazyLoad>
                                 <img className='chef-recipe-img rounded-lg' src={picture} alt="" />

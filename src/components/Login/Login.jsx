@@ -40,7 +40,7 @@ const Login = () => {
     return (
         <div className='login-main flex items-center justify-center'>
             <div className="container mx-auto">
-                <div className="login-wrapper grid grid-cols-2 text-center">
+                <div className="login-wrapper grid lg:grid-cols-2 text-center">
                     <div className="login-left">
                         <h2 className="text-2xl font-bold text-[#FE4320] tracking-wider">User Login</h2>
                         <form onSubmit={loginHandler}>
@@ -70,7 +70,7 @@ const Login = () => {
 
                     </div>
                     <div className="login-right">
-                        <img src={loginImage} alt="" />
+                        <img className='hidden lg:block' src={loginImage} alt="" />
                     </div>
                 </div>
             </div>

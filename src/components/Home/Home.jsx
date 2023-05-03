@@ -13,7 +13,7 @@ const Home = () => {
         <>
             <div className='home-wrapper'>
                 <div className="container mx-auto">
-                    <div className="home-details text-white flex justify-center items-start flex-col h-screen w-6/12">
+                    <div className="home-details text-white flex justify-center items-start flex-col h-screen lg:w-6/12 lg:px-0 px-4">
                         <h1 className="text-2xl">Make a Order</h1>
                         <h1 className="text-6xl font-bold">
                             Creativity Is Always <br /> On Our Menu
