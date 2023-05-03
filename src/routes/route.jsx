@@ -18,17 +18,17 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home />,
-                loader: () => fetch('http://localhost:5000/allChef')
+                loader: () => fetch('https://foodie-frenzy-server-five.vercel.app/allChef')
             },
             {
                 path: '/chef-recipes/:id',
                 element: <PrivateRoute><ChefRecipes /></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/chef/${params.id}`)
+                loader: ({ params }) => fetch(`https://foodie-frenzy-server-five.vercel.app/chef/${params.id}`)
             },
             {
                 path: 'blog',
                 element: <Blog />,
-                loader: () => fetch('http://localhost:5000/blog')
+                loader: () => fetch('https://foodie-frenzy-server-five.vercel.app/blog')
             },
             {
                 path: 'login',

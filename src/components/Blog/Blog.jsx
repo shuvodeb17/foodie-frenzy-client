@@ -7,23 +7,22 @@ import './Blog.css';
 const Blog = () => {
     const blogs = useLoaderData();
     const ref = React.createRef();
-
     const options = {
-    orientation: 'landscape',
-    unit: 'in',
-    format: [12,15]
-};
+        orientation: 'landscape',
+        unit: 'in',
+        format: [12, 15]
+    };
 
     return (
         <div>
             <div className='flex items-center justify-center'>
-            <Pdf targetRef={ref} filename="blog-answer.pdf" options={options}>
-                {({ toPdf }) => <button className='btn btn-primary' onClick={toPdf}>Generate Pdf</button>}
-            </Pdf>
+                <Pdf targetRef={ref} filename="blog-answer.pdf" options={options}>
+                    {({ toPdf }) => <button className='btn btn-primary' onClick={toPdf}>Generate Pdf</button>}
+                </Pdf>
             </div>
 
             <div className="blog-container mx-auto">
-                <div ref={ref} className='grid grid-cols-2 gap-4'>
+                <div ref={ref} className='grid lg:grid-cols-2 gap-4'>
                     {
                         blogs.map(blog => <div>
                             <div className="container mx-auto px-4 lg:px-0">

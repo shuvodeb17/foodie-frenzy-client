@@ -28,7 +28,7 @@ const Login = () => {
                 const loggedUser = result.user
                 console.log(loggedUser);
                 setError('');
-                setSuccess('Registration Successful')
+                setSuccess('Login Successful')
                 navigate(from, { replace: true })
             })
             .catch(error => {

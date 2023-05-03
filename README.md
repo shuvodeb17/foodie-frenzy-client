@@ -7,4 +7,4 @@
 * If the user creates an account, his picture will show. Hovering the mouse over the picture will show his name
 * If user goes to random route then 404 page will show
 
-https://www.google.com
+https://foodie-frenzy-37ee5.web.app/
