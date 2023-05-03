@@ -2,6 +2,8 @@ import React from 'react';
 import './ChefDetails.css';
 import { BeakerIcon, HandThumbUpIcon } from '@heroicons/react/24/solid'
 import { Link } from 'react-router-dom';
+import LazyLoad from 'react-lazy-load';
+
 
 
 const ChefDetails = ({ chef }) => {
@@ -10,7 +12,9 @@ const ChefDetails = ({ chef }) => {
     return (
         <div className='bg-[#0E1317] text-white'>
             <div className="chef-top">
-                <img src={picture} alt="" />
+                <LazyLoad>
+                    <img src={picture} alt="" />
+                </LazyLoad>
             </div>
             <div className="chef-bottom px-5 py-5">
                 <p className='text-2xl font-bold'>Name: {name}</p>

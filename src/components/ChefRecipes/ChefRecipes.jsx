@@ -6,6 +6,8 @@ import { HandThumbUpIcon } from '@heroicons/react/24/solid';
 import { Rating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
 import toast, { Toaster } from 'react-hot-toast';
+import LazyLoad from 'react-lazy-load';
+
 
 const ChefRecipes = () => {
 
@@ -31,7 +33,9 @@ const ChefRecipes = () => {
                 <div className="container mx-auto">
                     <div className='w-6/12 text-white mx-auto'>
                         <div className='chef-main bg-[#0E1317] p-5 '>
-                            <img className='chef-recipe-img rounded-lg' src={picture} alt="" />
+                            <LazyLoad>
+                                <img className='chef-recipe-img rounded-lg' src={picture} alt="" />
+                            </LazyLoad>
                             <div>
                                 <h2 className="text-3xl font-bold mt-2 mb-3">Name: {name}</h2>
                                 <p className='mb-3'><span className='font-bold'>Description:</span> {description}</p>
