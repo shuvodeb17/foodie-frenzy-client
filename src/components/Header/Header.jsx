@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProviders';
+import ActiveLink from '../ActiveLink/ActiveLink';
 
 const Header = () => {
     const { user, logout } = useContext(AuthContext);
@@ -21,10 +22,10 @@ const Header = () => {
                     <a className="btn btn-ghost normal-case text-xl">Foodie Frenzy</a>
                 </div>
                 <div className="flex-none">
-                    <ul className="menu menu-horizontal px-1">
-                        <li><Link to='/'>Home</Link></li>
-                        <li><Link style={{ display: 'none' }} to='/'>{user?.email}</Link></li>
-                        <li><Link to='/blog'>Blog</Link></li>
+                    <ul className="menu menu-horizontal px-1 flex items-center gap-4">
+                        <ActiveLink to='/'>Home</ActiveLink>
+                        {/* <ActiveLink style={{ display: 'none' }} >{user?.email}</ActiveLink> */}
+                        <ActiveLink to='/blog'>Blog</ActiveLink>
                         {
                             user &&
                             <div className="avatar me-5">
@@ -35,8 +36,8 @@ const Header = () => {
                         }
                         {
                             user ?
-                                <Link to='/login'>
-                                    <button onClick={logoutHandler} className="btn btn-primary">
+                                <Link>
+                                    <button onClick={logoutHandler} className="btn btn-secondary">
                                         Logout
                                     </button></Link>
                                 :
