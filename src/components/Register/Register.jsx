@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import loginImage from '../../assets/img/login.png';
 import '../Login/Login.css';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProviders';
 import { updateProfile } from 'firebase/auth';
 
@@ -10,6 +10,7 @@ const Register = () => {
     const { createUser } = useContext(AuthContext);
     const [success, setSuccess] = useState('');
     const [error, setError] = useState('');
+    const navigate = useNavigate();
 
     const registerHandler = e => {
         e.preventDefault();
@@ -27,6 +28,7 @@ const Register = () => {
                 setUsernameAndPhoto(result.user, name, photo)
                 setError('');
                 setSuccess('Registration Successful')
+                navigate('/')
             })
             .catch(error => {
                 setSuccess('');
